@@ -1,4 +1,4 @@
-document.getElementById("leadForm").addEventListener("submit", async (e) => {
+document.getElementById("leadForm").addEventListener("submit", async (e) => {  
   e.preventDefault();
 
   const messageBox = document.getElementById("message");
@@ -15,7 +15,7 @@ document.getElementById("leadForm").addEventListener("submit", async (e) => {
   };
 
   try {
-    const res = await fetch("http://localhost:3115/api/createLead", {
+    const response = await fetch("https://backend-leads-rgut.onrender.com/api/createLead", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -23,16 +23,17 @@ document.getElementById("leadForm").addEventListener("submit", async (e) => {
       body: JSON.stringify(data)
     });
 
-    const result = await res.json();
+    const result = await response.json();
 
-    if (result.success) {
-      messageBox.innerHTML = "✅ Lead Created Successfully";
+    if (response.ok) {
+      messageBox.innerHTML = "✅ Lead Submitted Successfully";
       document.getElementById("leadForm").reset();
     } else {
-      messageBox.innerHTML = "❌ " + result.message;
+      messageBox.innerHTML = "❌ " + (result.message || "Error occurred");
     }
 
   } catch (err) {
+    console.error(err);
     messageBox.innerHTML = "❌ Server Error";
   }
 });
