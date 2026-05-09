@@ -14,8 +14,9 @@ document.getElementById("leadForm").addEventListener("submit", async (e) => {
     notes: "From Form UI"
   };
 
-  try {
-    const response = await fetch("https://backend-leads-rgut.onrender.com/api/createLead", {
+  try {  
+    const API = "https://backend-leads-rgut.onrender.com";
+    const response = await fetch(`${API}/api/createLead`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -25,7 +26,7 @@ document.getElementById("leadForm").addEventListener("submit", async (e) => {
 
     const result = await response.json();
 
-    if (response.ok) {
+    if (response.ok) {  
       messageBox.innerHTML = "✅ Lead Submitted Successfully";
       document.getElementById("leadForm").reset();
     } else {
@@ -33,7 +34,7 @@ document.getElementById("leadForm").addEventListener("submit", async (e) => {
     }
 
   } catch (err) {
-    console.error(err);
+    console.error(err);  
     messageBox.innerHTML = "❌ Server Error";
   }
 });
