@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./LeadForm.css";
 
 function LeadForm() {
   const [formData, setFormData] = useState({
@@ -9,6 +8,7 @@ function LeadForm() {
   });
 
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -20,6 +20,22 @@ function LeadForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (formData.name.trim().length < 3) {
+      setMessage("❌ Name must be at least 3 characters");
+      return;
+    }
+
+    if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+      setMessage("❌ Enter a valid email");
+      return;
+    }
+
+    if (!/^\d{10}$/.test(formData.phone)) {
+      setMessage("❌ Phone number must be 10 digits");
+      return;
+    }
+
+    setLoading(true);
     setMessage("Submitting...");
 
     const data = {
@@ -46,22 +62,29 @@ function LeadForm() {
 
       if (response.ok) {
         setMessage("✅ Lead Submitted Successfully");
+
         setFormData({
           name: "",
           email: "",
           phone: "",
         });
       } else {
-        setMessage(`❌ ${result.message}`);
+        setMessage(`❌ ${result.message || "Error occurred"}`);
       }
     } catch (error) {
       setMessage("❌ Server Error");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="container">
-      <h2>Lead Form</h2>
+      <h2>🎓 Student Registration Form</h2>
+
+      <p className="subtitle">
+        Fill your details and our team will contact you.
+      </p>
 
       <form onSubmit={handleSubmit}>
         <input
@@ -70,7 +93,6 @@ function LeadForm() {
           placeholder="Enter Name"
           value={formData.name}
           onChange={handleChange}
-          required
         />
 
         <input
@@ -79,22 +101,37 @@ function LeadForm() {
           placeholder="Enter Email"
           value={formData.email}
           onChange={handleChange}
-          required
         />
 
         <input
           type="text"
           name="phone"
-          placeholder="Enter Phone"
+          placeholder="Enter Phone Number"
           value={formData.phone}
           onChange={handleChange}
-          required
         />
 
-        <button type="submit">Submit</button>
+        <button type="submit" disabled={loading}>
+          {loading ? "Submitting..." : "Register Now"}
+        </button>
+
+        <button
+          type="button"
+          className="reset-btn"
+          onClick={() => {
+            setFormData({
+              name: "",
+              email: "",
+              phone: "",
+            });
+            setMessage("");
+          }}
+        >
+          Reset
+        </button>
       </form>
 
-      <p>{message}</p>
+      {message && <p className="message">{message}</p>}
     </div>
   );
 }
