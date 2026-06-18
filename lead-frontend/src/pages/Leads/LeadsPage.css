@@ -1,0 +1,99 @@
+.leads-page {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.leads-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+.leads-header h1 {
+  margin: 0;
+  font-size: 20px;
+  color: #0f172a;
+}
+.muted {
+  color: #94a3b8;
+  font-size: 13px;
+  margin: 4px 0 0;
+}
+.card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 20px;
+}
+.card-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 12px;
+  color: #0f172a;
+}
+.btn-outline {
+  background: transparent;
+  border: 1px solid #cbd5e1;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.btn-outline:hover {
+  background: #f1f5f9;
+}
+.error-text {
+  color: #dc2626;
+  font-size: 13px;
+  padding: 16px;
+}
+.priority-badge {
+  padding: 2px 8px;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.priority-low {
+  background: #f1f5f9;
+  color: #475569;
+}
+.priority-medium {
+  background: #fef3c7;
+  color: #92400e;
+}
+.priority-high {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+.status-cell {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.status-input {
+  width: 54px;
+  padding: 4px 6px;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  font-size: 12px;
+}
+.btn-sm {
+  padding: 4px 10px;
+  background: #0f172a;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.btn-sm:hover {
+  background: #1e293b;
+}
+.btn-link-danger {
+  background: none;
+  border: none;
+  color: #dc2626;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: underline;
+}

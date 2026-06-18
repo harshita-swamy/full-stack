@@ -1,7 +1,7 @@
-import LeadForm from "./pages/LeadForm";
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
-  return <LeadForm />;
+  return <AppRoutes />;
 }
 
 export default App;
