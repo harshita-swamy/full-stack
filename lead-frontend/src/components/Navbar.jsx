@@ -1,9 +1,9 @@
-import "./Navbar.css";
-
-export default function Navbar() {
+function Navbar() {
   return (
-    <header className="navbar">
-      <h1 className="navbar-title">Lead Management</h1>
-    </header>
+    <div className="navbar">
+      <h2>CRM LMS</h2>
+    </div>
   );
 }
+
+export default Navbar;

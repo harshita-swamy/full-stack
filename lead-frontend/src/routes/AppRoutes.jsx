@@ -1,16 +1,25 @@
-import { Routes, Route } from "react-router-dom";
-import DashboardLayout from "../layouts/DashboardLayout";
-import LeadsPage from "../pages/Leads/LeadsPage";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-export default function AppRoutes() {
+import Dashboard from "../pages/Dashboard/Dashboard";
+import LeadsPage from "../pages/Leads/LeadsPage";
+import BatchList from "../pages/Batches/BatchList";
+import AttendanceList from "../pages/Attendance/AttendanceList";
+import PaymentList from "../pages/Payments/PaymentList";
+import CertificateList from "../pages/Certificates/CertificateList";
+
+function AppRoutes() {
   return (
-    <Routes>
-      <Route element={<DashboardLayout />}>
-        <Route path="/" element={<LeadsPage />} />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
         <Route path="/leads" element={<LeadsPage />} />
-        {/* Add other module pages here as they're built, e.g.: */}
-        {/* <Route path="/students" element={<StudentsPage />} /> */}
-      </Route>
-    </Routes>
+        <Route path="/batches" element={<BatchList />} />
+        <Route path="/attendance" element={<AttendanceList />} />
+        <Route path="/payments" element={<PaymentList />} />
+        <Route path="/certificates" element={<CertificateList />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
+
+export default AppRoutes;
